@@ -4,8 +4,7 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-                git branch: 'main'
-					url: 'https://github.com/hungdang362/agendash.git'
+				git url: 'https://github.com/hungdang362/agendash.git', branch: 'main'
             }
         }
         
