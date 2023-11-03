@@ -15,6 +15,6 @@ pipeline {
                     docker.build('agendash-v1:latest')
                 }
             }
-        }s
+        }
     }
 }
