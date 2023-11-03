@@ -8,12 +8,6 @@ pipeline {
             }
         }
         
-        stage('Build') {
-            steps {
-                script {
-                    docker.build('agendash-v1:latest')
-                }
-            }
-        }
+        
     }
 }
