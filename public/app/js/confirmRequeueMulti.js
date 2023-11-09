@@ -4,9 +4,10 @@ const confirmRequeueMulti = Vue.component("confirm-multi-requeue", {
     RequeueMulti(ids) {
       const url = `api/jobs/requeue`;
       let body = { jobIds: ids };
+      const q = getQueryString();
       return axios
         .post(url, body, {
-            headers: { Authorization: `Bearer ${getToken()}` }
+            headers: { Authorization: `Bearer ${q['token'] || ''}`, 'authorization-token': `${q['authorization-token'] || ''}` }
         })
         .then((result) => result.data)
         .then((data) => {

@@ -4,9 +4,10 @@ const confirmRequeue = Vue.component("confirm-requeue", {
     RequeueOne(id) {
       const url = `api/jobs/requeue`;
       let body = { jobIds: [id] };
+      const q = getQueryString();
       return axios
         .post(url, body, {
-            headers: { Authorization: `Bearer ${getToken()}` }
+            headers: { Authorization: `Bearer ${q['token'] || ''}`, 'authorization-token': `${q['authorization-token'] || ''}` }
         })
         .then((result) => result.data)
         .then((data) => {

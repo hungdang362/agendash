@@ -32,9 +32,10 @@ const newJob = Vue.component("new-job", {
         jobRepeatEvery: this.jobRepeatEvery,
         jobData: jobData,
       };
+      const q = getQueryString();
       return axios
         .post(url, body, {
-            headers: { Authorization: `Bearer ${getToken()}` }
+            headers: { Authorization: `Bearer ${q['token'] || ''}`, 'authorization-token': `${q['authorization-token'] || ''}` }
         })
         .then((result) => result.data)
         .then((data) => {
