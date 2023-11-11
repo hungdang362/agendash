@@ -10,7 +10,7 @@ pipeline {
         stage('Docker Build') {
             steps{
                 script {
-                    dockerImage = docker.build registry + ":v1"
+                    dockerImage = docker.build("agendash:v1")
                 }
             }
 		}
