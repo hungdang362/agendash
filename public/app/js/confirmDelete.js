@@ -4,9 +4,10 @@ const confirmDelete = Vue.component("confirm-delete", {
     deleteOne(id) {
       const url = `api/jobs/delete`;
       let body = { jobIds: [id] };
+      const q = getQueryString();
       return axios
         .post(url, body, {
-            headers: { Authorization: `Bearer ${getToken()}` }
+            headers: { Authorization: `Bearer ${q['token'] || ''}`, 'authorization-token': `${q['authorization-token'] || ''}` }
         })
         .then((result) => result.data)
         .then((data) => {

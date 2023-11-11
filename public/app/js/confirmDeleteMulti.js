@@ -4,9 +4,10 @@ const confirmDeleteMulti = Vue.component("confirm-multi-delete", {
     deleteMulti(ids) {
       const url = `api/jobs/delete`;
       let body = { jobIds: ids };
+      const q = getQueryString();
       return axios
         .post(url, body, {
-            headers: { Authorization: `Bearer ${getToken()}` }
+            headers: { Authorization: `Bearer ${q['token'] || ''}`, 'authorization-token': `${q['authorization-token'] || ''}` }
         })
         .then((result) => result.data)
         .then((data) => {

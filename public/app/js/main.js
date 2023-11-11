@@ -138,9 +138,10 @@ const app = Vue.component("app", {
       const url = `api?limit=${limit}&job=${name}&skip=${skip}&property=${property}${
         object ? "&isObjectId=true" : ""
       }${state ? `&state=${state}` : ""}&q=${search}`;
+      const q = getQueryString();
       return axios
         .get(url, {
-            headers: { Authorization: `Bearer ${getToken()}` }
+            headers: { Authorization: `Bearer ${q['token'] || ''}`, 'authorization-token': `${q['authorization-token'] || ''}` }
         })
         .then((result) => result.data)
         .then(
