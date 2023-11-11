@@ -7,13 +7,8 @@ pipeline {
 				git branch: 'main', url: 'https://github.com/hungdang362/agendash.git'
             }
         }
-        stage('Docker Build') {
-            steps{
-                script {
-                    dockerImage = docker.build("agendash:v1")
-                }
-            }
-		}
-        
+        sshagent(['ssh-remote']) {
+            sh 'ssh -o StrictHostKeyChecking=no -l root 171.244.28.234 touch jenkins.txt'
+        }
     }
 }
