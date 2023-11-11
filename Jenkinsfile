@@ -7,8 +7,12 @@ pipeline {
 				git branch: 'main', url: 'https://github.com/hungdang362/agendash.git'
             }
         }
-        sshagent(['ssh-remote']) {
-            sh 'ssh -o StrictHostKeyChecking=no -l root 171.244.28.234 touch jenkins.txt'
+        stage('SSH server') {
+            steps {
+                sshagent(['ssh-remote']) {
+                    sh 'ssh -o StrictHostKeyChecking=no -l root 171.244.28.234 touch jenkins.txt'
+                }
+            }
         }
     }
 }
