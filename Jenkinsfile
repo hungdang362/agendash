@@ -9,8 +9,10 @@ pipeline {
         }
         stage('SSH server') {
             steps {
-                sshagent(['ssh-remote']) {
-                    sh 'ssh -o StrictHostKeyChecking=no -l root 171.244.28.234 -p 222 touch jenkins.txt'
+                sshagent(['phatgiao-vn']) {
+                    sh 'pwd'
+                    sh 'ssh -o StrictHostKeyChecking=no -l root 171.244.28.234 -p 222 touch jenkins-test.txt'
+                    sh 'cd /home'
                 }
             }
         }
