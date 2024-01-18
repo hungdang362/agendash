@@ -10,7 +10,7 @@ pipeline {
         stage('SSH server') {
             steps {
                 sshagent(['ssh-oneclinic']) {
-                    sh 'ssh -o StrictHostKeyChecking=no -l ubuntu 3.1.15.255 cd /home/ubuntu/oneclinic-cis sudo docker pull vmedgroup/oneclinic:doctor-backend-test sudo docker compose up -d'
+                    sh 'ssh -o StrictHostKeyChecking=no -l ubuntu 3.1.15.255 /home/ubuntu/oneclinic-cis/deploy.sh'
                 }
             }
         }
