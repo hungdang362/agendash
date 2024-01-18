@@ -10,7 +10,7 @@ pipeline {
         stage('SSH server') {
             steps {
                 sshagent(['ssh-oneclinic']) {
-                    sh 'ssh -o StrictHostKeyChecking=no -l ubuntu 3.1.15.255 && pwd'
+                    sh 'ssh -o StrictHostKeyChecking=no -l ubuntu 3.1.15.255 pwd cd /home/ubuntu/oneclinic-cis'
                 }
             }
         }
